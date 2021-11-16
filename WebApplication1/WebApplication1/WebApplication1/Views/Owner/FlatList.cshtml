@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApplication1.Models.Flat>
+
+@{
+    ViewBag.Title = "Flat List";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/owner/dashboard">Dashboard</a></li>
+                <li><a href="/owner/flatList">My Flat List</a></li>
+                <li><a href="/owner/editProfile">Edit Profile</a></li>
+                <li><a href="/owner/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h2>Flat List</h2>
+
+<p>
+    <a href="/owner/addFlat" class="btn btn-primary">Add Flat</a>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatSize)
+        </th>
+        <th>
+            
+            @Html.DisplayNameFor(model => model.FlatDetails)
+        </th>
+        <th>
+        
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rent)
+            </td>
+            <td>
+                <a href="/owner/edit?id=@item.FlatId" class="btn btn-info">Edit</a>
+                <a href="/owner/delete?id=@item.FlatId" class="btn btn-danger">Delete</a>
+                <a href="/owner/viewDetails?id=@item.FlatId" class="btn btn-success">View Details</a>
+            </td>
+        </tr>
+    }
+
+</table>

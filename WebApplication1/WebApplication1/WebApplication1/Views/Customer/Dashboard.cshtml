@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication1.Models.Booking>
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/customer/dashboard">Dashboard</a></li>
+                <li><a href="/customer/HouseList">House List</a></li>
+                <li><a href="/customer/EditProfile">Edit Profile</a></li>
+                <li><a href="/customer/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3>Welcome @Session["Username"]</h3>
+
+<h3>Your Booking Flat List</h3>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Booking Id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookigId)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a href="/customer/bookingDetails?id=@item.FlatId" class="btn btn-success">Booking Details</a>
+            </td>
+        </tr>
+    }
+
+</table>

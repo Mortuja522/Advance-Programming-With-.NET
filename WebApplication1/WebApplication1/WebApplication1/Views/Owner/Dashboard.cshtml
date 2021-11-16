@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/owner/dashboard">Dashboard</a></li>
+                <li><a href="/owner/flatList">My Flat List</a></li>
+                <li> <a href=""></a>Booking Details</li>
+                <li><a href="/owner/editProfile">Edit Profile</a></li>
+                <li><a href="/owner/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<h3>
+    Welcome  @Session["Username"]
+</h3>

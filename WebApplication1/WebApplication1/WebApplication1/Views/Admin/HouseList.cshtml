@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplication1.Models.Flat>
+
+@{
+    ViewBag.Title = "HouseList";
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/AdminDashboard">Dashboard</a></li>
+                <li><a href="/admin/userList">User List</a></li>
+                <li><a href="/admin/houseList">House List</a></li>
+                <li><a href="/admin/bookingList">Bookig Flat List</a></li>
+                <li><a href="/admin/editProfile">Edit Profile</a></li>
+                <li><a href="/admin/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<h2>House List</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlatSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlatDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "FlatEdit", new { id=item.FlatId }) |
+            @Html.ActionLink("Details", "FlatDetails", new { id=item.FlatId }) |
+            @Html.ActionLink("Delete", "FlatDelete", new { id=item.FlatId })
+        </td>
+    </tr>
+}
+
+</table>

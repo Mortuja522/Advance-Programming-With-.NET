@@ -1,0 +1,62 @@
+﻿@model WebApplication1.Models.User
+@{
+    ViewBag.Title = "AddUser";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/AdminDashboard">Dashboard</a></li>
+                <li><a href="/admin/userList">User List</a></li>
+                <li><a href="/admin/houseList">House List</a></li>
+                <li><a href="/admin/bookingList">Bookig Flat List</a></li>
+                <li><a href="/admin/reviewComment">Review Comment</a></li>
+                <li><a href="/admin/editProfile">Edit Profile</a></li>
+                <li><a href="/admin/changePassword">Change Password</a></li>
+                <li><a href="/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h2>AddUser</h2>
+
+<form action="/admin/addUser" method="post">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="Username">
+    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="Email" class="form-control" />
+    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="Password" class="form-control" />
+    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Active</label>
+        <input type="number" name="active" class="form-control" />
+    @Html.ValidationMessageFor(m => m.active, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Type</label>
+        <select name="Type" class="form-control">
+            <option value="2">Owner</option>
+            <option value="3">Customer</option>
+        </select>
+    </div>
+
+    <input type="submit" value="Add User" class="btn btn-info" />
+</form>

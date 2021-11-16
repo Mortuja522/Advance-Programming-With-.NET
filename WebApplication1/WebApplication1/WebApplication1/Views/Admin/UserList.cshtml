@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApplication1.Models.User>
+
+@{
+    ViewBag.Title = "UserList";
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/AdminDashboard">Dashboard</a></li>
+                <li><a href="/admin/userList">User List</a></li>
+                <li><a href="/admin/houseList">House List</a></li>
+                <li><a href="/admin/bookingList">Bookig Flat List</a></li>
+                <li><a href="/admin/editProfile">Edit Profile</a></li>
+                <li><a href="/admin/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<h2>User List</h2>
+
+<p>
+    <a href="/admin/addUser" class="btn btn-primary">Add User</a>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            <a href="/admin/edit?id=@item.UserId" class="btn btn-info">Edit</a>
+            <a href="/admin/delete?id=@item.UserId" class="btn btn-danger">Delete</a>
+            <a href="/admin/block?id=@item.UserId" class="btn btn-warning">Block</a>
+            <a href="/admin/viewDetails?id=@item.UserId" class="btn btn-success">View Details</a>
+        </td>
+    </tr>
+}
+
+</table>

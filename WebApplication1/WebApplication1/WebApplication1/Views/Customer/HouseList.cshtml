@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<WebApplication1.Models.Flat>
+@{
+    ViewBag.Title = "House List";
+}
+
+<h2>House List</h2>
+
+<h4 class="text-danger"> @Session["booked"]</h4>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/customer/dashboard">Dashboard</a></li>
+                <li><a href="/customer/houseList">House List</a></li>
+                <li><a href="/customer/EditProfile">Edit Profile</a></li>
+                <li><a href="/customer/changePassword">Change Password</a></li>
+                <li><a href="/logout/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Flat Size</th>
+            <th>Flat Rent</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FlatSize</td>
+            <td>@item.Rent</td>
+            <td>@item.Location</td>
+            <td>
+                <a href="/customer/flatDetails?id=@item.FlatId" class="btn btn-warning">Flat Details</a>
+                <a href="/customer/booking?id=@item.FlatId" class="btn btn-primary">Booking</a>
+            </td>
+        </tr>
+    }
+</table>
+
